@@ -12,12 +12,9 @@ int removeDuplicatas(char *arquivo1, char *arquivo2) {
 
     int numero, numeroTemp, duplicata;
 
-    // Ler cada número do arquivo de entrada
     while (fscanf(arq1, "%d", &numero) != EOF) {
-        // Reiniciar a verificação de duplicatas
-        duplicata = 0;
 
-        // Abrir arquivo de saída para leitura
+        duplicata = 0;
         FILE *saidaTemp = fopen(arquivo2, "r");
 
         if (!saidaTemp) {
@@ -26,7 +23,7 @@ int removeDuplicatas(char *arquivo1, char *arquivo2) {
             return -1;
         }
 
-        // Verificar se o número já está no arquivo de saída
+    
         while (fscanf(saidaTemp, "%d", &numeroTemp) != EOF) {
             if (numeroTemp == numero) {
                 duplicata = 1;
@@ -35,8 +32,6 @@ int removeDuplicatas(char *arquivo1, char *arquivo2) {
         }
 
         fclose(saidaTemp);
-
-        // Se não for duplicata, escreva no arquivo de saída
         if (!duplicata) {
             fprintf(arq2, "%d\n", numero);
         }
